@@ -1,9 +1,27 @@
+package aaaaaa;
 
 public class ManipulacaoDeString {
-	private String salario, gratificacao, nome, sequencia;
+	private String salario, gratificacao, nome, sequencia,
+	nomeDep, dataDep, mostraDep, sexoDep;
+
+	public String getMostraDep() {
+		return mostraDep;
+	}
+
+	public void setMostraDep(String mostraDep) {
+		this.mostraDep = mostraDep;
+	}
 
 	public String getNome() {
 		return nome;
+	}
+
+	public String getDataDep() {
+		return dataDep;
+	}
+
+	public void setDataDep(String dataDep) {
+		this.dataDep = dataDep;
 	}
 
 	public void setNome(String nome) {
@@ -11,16 +29,39 @@ public class ManipulacaoDeString {
 	}
 
 	public void separaFrase(String frase, int qtd) {
-		String[] nSeparado = frase.trim().split("\n");//separa por quebra de linha
+		String[] nSeparado = frase.split("\n");//separa por quebra de linha
 		String[] x = nSeparado[0].split("-");//separa por -
-		String sal = x[2];
-		String grat = x[3];
-		nome = x[1];
-		sequencia = x[0];
+		String sal = x[qtd+2];
+		String grat = x[qtd+3];
+		nome = x[qtd+1];
+		sequencia = x[qtd];
 		mGratificacao(grat);
 		mSalario(sal);	
+		if(x.length > 4) {
+			mostraDep = "";
+			nomeDep = x[qtd+4];
+			String data = x[qtd+5];
+			manipulaData(data);
+			if(x[6].charAt(0) == 'M') {
+				sexoDep = "MASCULINO";
+			}else {
+				sexoDep = "FEMININO";
+			}
+			mostraDep = "     "+nomeDep +" - "+ dataDep +" - "+ sexoDep;
+		}else {
+			
+			mostraDep = "                <Sem filhos>";
+		}
 	}
-	
+
+	public String getNomeDep() {
+		return nomeDep;
+	}
+
+	public void setNomeDep(String nomeDep) {
+		this.nomeDep = nomeDep;
+	}
+
 	public String getSequencia() {
 		return sequencia;
 	}
@@ -44,6 +85,20 @@ public class ManipulacaoDeString {
 	public void setSalario(String salario) {
 		this.salario = salario;
 	}
+	public void manipulaData(String dt) {
+		String aux ="";
+		aux += dt.charAt(0);
+		aux += dt.charAt(1);
+		aux += "/";
+		aux += dt.charAt(2);
+		aux += dt.charAt(3);
+		aux += "/";
+		aux += dt.charAt(4);
+		aux += dt.charAt(5);
+		aux += dt.charAt(6);
+		aux += dt.charAt(7);
+		dataDep = aux;
+	}
 	public String mGratificacao(String grat) {
 		String aux = "";
 		String aux1 = "";
@@ -58,7 +113,7 @@ public class ManipulacaoDeString {
 			}
 			grat = aux1;
 		//}
-		
+
 		if(grat.length() == 7) {
 			aux += grat.charAt(0);
 			aux += grat.charAt(1);
@@ -104,7 +159,7 @@ public class ManipulacaoDeString {
 		gratificacao = aux;
 		return gratificacao;
 	}
-	
+
 	public String mSalario(String sal) {
 		//salario = sal;
 		String aux = "";
@@ -120,7 +175,7 @@ public class ManipulacaoDeString {
 			}
 			sal = aux1;
 		//}
-		
+
 		if(sal.length() == 7) {
 			aux += sal.charAt(0);
 			aux += sal.charAt(1);
