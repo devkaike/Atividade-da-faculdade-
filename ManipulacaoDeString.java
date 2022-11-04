@@ -112,7 +112,7 @@ public class ManipulacaoDeString {
 		String aux1 = "";
 		aux += "R$";
 		int a = 0;
-		while(grat.charAt(a) == '0') {
+		while(grat.length() == a && grat.charAt(a) == '0') {
 			a++;
 		}
 		//if(sal.charAt(0) == '0') {
@@ -121,57 +121,61 @@ public class ManipulacaoDeString {
 			}
 			grat = aux1;
 		//}
-
-		if(grat.length() == 7) {
-			aux += grat.charAt(0);
-			aux += grat.charAt(1);
-			aux += ".";
-			aux += grat.charAt(2);
-			aux += grat.charAt(3);
-			aux += grat.charAt(4);
-			aux += ",";
-			aux += grat.charAt(5);
-			aux += grat.charAt(6);
+		if(a == grat.length()) {
+			aux += "0,0";
+		}else {
+			if(grat.length() == 7) {
+				aux += grat.charAt(0);
+				aux += grat.charAt(1);
+				aux += ".";
+				aux += grat.charAt(2);
+				aux += grat.charAt(3);
+				aux += grat.charAt(4);
+				aux += ",";
+				aux += grat.charAt(5);
+				aux += grat.charAt(6);
+			}
+			if(grat.length() == 6) {
+				aux += grat.charAt(0);
+				aux += ".";
+				aux += grat.charAt(1);
+				aux += grat.charAt(2);
+				aux += grat.charAt(3);
+				aux += ",";
+				aux += grat.charAt(4);
+				aux += grat.charAt(5);
+			}
+			if(grat.length() == 5) {
+				aux += grat.charAt(0);
+				aux += grat.charAt(1);
+				aux += grat.charAt(2);
+				aux += ",";
+				aux += grat.charAt(3);
+				aux += grat.charAt(4);
+			}
+			if(grat.length() == 4) {
+				aux += grat.charAt(0);
+				aux += grat.charAt(1);
+				aux += ",";
+				aux += grat.charAt(2);
+				aux += grat.charAt(3);
+			}
+			if(grat.length() == 3) {
+				aux += grat.charAt(0);
+				aux += ",";
+				aux += grat.charAt(1);
+				aux += grat.charAt(2);
+			}
+			if(grat.length() == 2) {
+				aux += grat.charAt(0);
+				aux += ",";
+				aux += grat.charAt(1);
+			}
+			if(grat.length() == 1) {
+				aux += grat.charAt(0);
+			}
 		}
-		if(grat.length() == 6) {
-			aux += grat.charAt(0);
-			aux += ".";
-			aux += grat.charAt(1);
-			aux += grat.charAt(2);
-			aux += grat.charAt(3);
-			aux += ",";
-			aux += grat.charAt(4);
-			aux += grat.charAt(5);
-		}
-		if(grat.length() == 5) {
-			aux += grat.charAt(0);
-			aux += grat.charAt(1);
-			aux += grat.charAt(2);
-			aux += ",";
-			aux += grat.charAt(3);
-			aux += grat.charAt(4);
-		}
-		if(grat.length() == 4) {
-			aux += grat.charAt(0);
-			aux += grat.charAt(1);
-			aux += ",";
-			aux += grat.charAt(2);
-			aux += grat.charAt(3);
-		}
-		if(grat.length() == 3) {
-			aux += grat.charAt(0);
-			aux += ",";
-			aux += grat.charAt(1);
-			aux += grat.charAt(2);
-		}
-		if(grat.length() == 2) {
-			aux += grat.charAt(0);
-			aux += ",";
-			aux += grat.charAt(1);
-		}
-		if(grat.length() == 1) {
-			aux += grat.charAt(0);
-		}
+		
 		gratificacao = aux;
 		return gratificacao;
 	}
@@ -182,7 +186,7 @@ public class ManipulacaoDeString {
 		String aux1 = "";
 		aux += "R$";
 		int a = 0;
-		while(sal.charAt(a) == '0') {
+		while(sal.length() == a && sal.charAt(a) == '0') {
 			a++;
 		}
 		//if(sal.charAt(0) == '0') {
